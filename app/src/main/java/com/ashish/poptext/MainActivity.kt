@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
@@ -45,20 +47,20 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             modifier = modifier,
             color = Green
         )
-        PopText()
-
-        ButtonGreen()
-
-//        MineCraftButtonDismiss(text)
-        PixelButtonPrimary(text = "Accept", onClick = {
-            Toast.makeText(context, "Button Clicked", Toast.LENGTH_SHORT).show()
-
-        }, modifier)
-
-        PixelButtonDismiss(text = "Dismiss", onClick = {
-            Toast.makeText(context, "Button Clicked", Toast.LENGTH_SHORT).show()
-
-        }, modifier)
+//        PopText()
+//
+//        ButtonGreen()
+//
+////        MineCraftButtonDismiss(text)
+//        PixelButtonPrimary(text = "Accept", onClick = {
+//            Toast.makeText(context, "Button Clicked", Toast.LENGTH_SHORT).show()
+//
+//        }, modifier.height(60.dp).fillMaxWidth(0.5f))
+//
+//        PixelButtonDismiss(text = "Dismiss", onClick = {
+//            Toast.makeText(context, "Button Clicked Dismissed", Toast.LENGTH_SHORT).show()
+//
+//        }, modifier.fillMaxWidth())
     }
 
 }
