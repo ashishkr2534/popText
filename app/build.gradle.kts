@@ -60,6 +60,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // 👉 local library
-    //implementation(project(":popText"))
+//    implementation(project(":popText"))
     implementation(libs.poptext)
 }

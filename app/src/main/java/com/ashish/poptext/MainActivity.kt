@@ -1,6 +1,7 @@
 package com.ashish.poptext
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -13,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Green
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ashish.poptext.ui.theme.PopTextTheme
@@ -36,6 +38,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
     Column(modifier = Modifier.padding(20.dp)) {
         Text(
             text = "Hello $name!",
@@ -47,9 +50,16 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         ButtonGreen()
 
 //        MineCraftButtonDismiss(text)
+        PixelButtonPrimary(text = "Accept", onClick = {
+            Toast.makeText(context, "Button Clicked", Toast.LENGTH_SHORT).show()
 
+        }, modifier)
+
+        PixelButtonDismiss(text = "Dismiss", onClick = {
+            Toast.makeText(context, "Button Clicked", Toast.LENGTH_SHORT).show()
+
+        }, modifier)
     }
-
 
 }
 
