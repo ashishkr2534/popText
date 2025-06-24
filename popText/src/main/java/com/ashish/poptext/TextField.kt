@@ -20,6 +20,10 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.ui.graphics.Color
+
 
 /**
  * Created by Ashish Kr on 24,June,2025
@@ -68,3 +72,58 @@ fun PixelTextField(
         shape = RoundedCornerShape(8.dp)
     )
 }
+
+
+@Composable
+fun PixelOutlinedTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    label: String = "",
+    placeholder: String = "",
+    textColor: Color = Color.White,
+    labelColor: Color = Color.Gray,
+    placeholderColor: Color = Color.LightGray,
+    borderColor: Color = Color.White,
+    focusedBorderColor: Color = Color.Cyan
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        modifier = modifier,
+        label = {
+            Text(
+                text = label,
+                fontFamily = PixelFamilyBold,
+                color = labelColor
+            )
+        },
+        placeholder = {
+            Text(
+                text = placeholder,
+                fontFamily = PixelFamilyBold,
+                color = placeholderColor
+            )
+        },
+        textStyle = LocalTextStyle.current.copy(
+            fontFamily = PixelFamilyBold,
+            color = textColor
+        ),
+        colors = TextFieldDefaults.colors(
+            focusedTextColor = textColor,
+            unfocusedTextColor = textColor,
+            cursorColor = focusedBorderColor,
+            focusedLabelColor = labelColor,
+            unfocusedLabelColor = labelColor,
+//            focusedBorderColor = focusedBorderColor,
+//            unfocusedBorderColor = borderColor,
+//            focusedTextColor = textColor,
+//            unfocusedTextColor = textColor,
+//            cursorColor = focusedBorderColor,
+//            focusedLabelColor = labelColor,
+//            unfocusedLabelColor = labelColor,
+//            placeholderColor = placeholderColor
+        )
+    )
+}
+

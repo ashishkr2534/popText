@@ -1,15 +1,18 @@
 package com.ashish.poptext
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonElevation
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -71,5 +74,30 @@ fun PixelButton(text: String,
             fontFamily = PixelFamilyBold,
             fontSize = fontSize,
             color = textColor)
+    }
+}
+
+@Composable
+fun PixelOutlinedButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    textColor: Color = Color.White,
+    borderColor: Color = Color.White,
+    fontSize: TextUnit = 18.sp,
+    shape: Shape = RoundedCornerShape(14.dp)
+) {
+    OutlinedButton(
+        onClick = onClick,
+        modifier = modifier,
+        border = BorderStroke(1.dp, borderColor),
+        shape = shape
+    ) {
+        Text(
+            text = text,
+            fontFamily = PixelFamilyBold,
+            color = textColor,
+            fontSize = fontSize
+        )
     }
 }
