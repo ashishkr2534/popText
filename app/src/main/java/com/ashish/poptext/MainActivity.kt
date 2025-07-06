@@ -50,10 +50,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             PopTextTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+                    AllItems()
                 }
             }
         }
@@ -162,73 +163,37 @@ class MainActivity : ComponentActivity() {
 //
 //}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val context = LocalContext.current
-    var showToast by remember { mutableStateOf(false) }
-
-    var text by remember { mutableStateOf("") }
-
-    Box(modifier = Modifier.fillMaxSize()) {
-        // Main UI
-        Column(modifier = Modifier.padding(20.dp)) {
-
-//            PixelatedCard(content = {
-//                Column {
-//                    PixelText(text)
-//                    PixelText(text, fontSize = 35.sp, color = Green)
+//@Composable
+//fun Greeting(name: String, modifier: Modifier = Modifier) {
+//    val context = LocalContext.current
+//    var showToast by remember { mutableStateOf(false) }
 //
-//                }
+//    var text by remember { mutableStateOf("") }
 //
-//            })
-//            Text(
-//                text = "Hello $name!",
-//                modifier = modifier,
-//                color = Green
-//            )
-            IconButton(onClick = { /* do something */ }) {
-                Icon(imageVector = Icons.Filled.Add, contentDescription = null)
-            }
-
-            PixelButton("Show Toast - $text", onClick = { showToast = true }, modifier = Modifier.fillMaxWidth())
-
-            PixelTextField(
-                value = text,
-                onValueChange = {
-                    text = it
-                },
-                modifier = Modifier.fillMaxWidth(),
-                label = "Label",
-                placeholder = "Placeholder"
-            )
-
-//            PixelCard(
-//                title = "High Score",
-//                backgroundColor = Color.Black,
-//                borderColor = Color.Green,
-//                contentColor = Color.White,
-//                titleColor = Color.Yellow,
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(16.dp)
-//            ) {
-//                Text(
-//                    text = "Ashish: 9000",
-//                    fontFamily = PixelFamilyBold,
-//                    fontSize = 16.sp
-//                )
+//    Box(modifier = Modifier.fillMaxSize()) {
+//        // Main UI
+//        Column(modifier = Modifier.padding(20.dp)) {
+//
+////            PixelatedCard(content = {
+////                Column {
+////                    PixelText(text)
+////                    PixelText(text, fontSize = 35.sp, color = Green)
+////
+////                }
+////
+////            })
+////            Text(
+////                text = "Hello $name!",
+////                modifier = modifier,
+////                color = Green
+////            )
+//            IconButton(onClick = { /* do something */ }) {
+//                Icon(imageVector = Icons.Filled.Add, contentDescription = null)
 //            }
-
-
-//            PixelButton(
-//                text = "Pixel Button 1",
-//                onClick = {
-//                    Toast.makeText(context, "Button Clicked - $text", Toast.LENGTH_SHORT).show()
-//                },
-//                modifier = Modifier.fillMaxWidth()
-//            )
-
-//            PixelOutlinedTextField(
+//
+//            PixelButton("Show Toast - $text", onClick = { showToast = true }, modifier = Modifier.fillMaxWidth())
+//
+//            PixelTextField(
 //                value = text,
 //                onValueChange = {
 //                    text = it
@@ -237,64 +202,100 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 //                label = "Label",
 //                placeholder = "Placeholder"
 //            )
-//            PixelText(text)
 //
-            MinecraftPixelCard2(content = {
-//                Text(text = "MINECRAFT",
-//                    fontSize = 24.sp,
-//                    fontWeight = FontWeight.Bold,
-//                    fontFamily = FontFamily.Monospace,
-//                    color = Color(0xFF2D2D2D),
-//                )
-                Column {
-                    PixelText(text)
-//                    PixelText(text, fontSize = 35.sp, color = Green)
-
-                }
-
-            })
-//            PixelatedCard(content = {
+////            PixelCard(
+////                title = "High Score",
+////                backgroundColor = Color.Black,
+////                borderColor = Color.Green,
+////                contentColor = Color.White,
+////                titleColor = Color.Yellow,
+////                modifier = Modifier
+////                    .fillMaxWidth()
+////                    .padding(16.dp)
+////            ) {
+////                Text(
+////                    text = "Ashish: 9000",
+////                    fontFamily = PixelFamilyBold,
+////                    fontSize = 16.sp
+////                )
+////            }
+//
+//
+////            PixelButton(
+////                text = "Pixel Button 1",
+////                onClick = {
+////                    Toast.makeText(context, "Button Clicked - $text", Toast.LENGTH_SHORT).show()
+////                },
+////                modifier = Modifier.fillMaxWidth()
+////            )
+//
+////            PixelOutlinedTextField(
+////                value = text,
+////                onValueChange = {
+////                    text = it
+////                },
+////                modifier = Modifier.fillMaxWidth(),
+////                label = "Label",
+////                placeholder = "Placeholder"
+////            )
+////            PixelText(text)
+////
+//            MinecraftPixelCard2(content = {
+////                Text(text = "MINECRAFT",
+////                    fontSize = 24.sp,
+////                    fontWeight = FontWeight.Bold,
+////                    fontFamily = FontFamily.Monospace,
+////                    color = Color(0xFF2D2D2D),
+////                )
 //                Column {
 //                    PixelText(text)
-//                    PixelText(text, fontSize = 35.sp, color = Green)
+////                    PixelText(text, fontSize = 35.sp, color = Green)
 //
 //                }
 //
 //            })
-//            PixelMCard()
-//            PixelText(text, fontSize = 25.sp)
-//            PixelText(text, fontSize = 35.sp, color = Green)
-//            PixelText(text, fontSize = 35.sp, color = Red, fontWeight = FontWeight.Bold)
-//            PixelText(text, fontSize = 35.sp, color = Green, maxLines = 2,)
-
-//            Box(
-//                modifier = Modifier
-//                    .size(200.dp)
-//                    .background(Color.Black)
-//                    .shadow(0.dp, RoundedCornerShape(20.dp))
-//                    .pixelatedBorder(borderColor = Color.Magenta,
-//                        borderWidth = 4.dp, pixelSize = 6.dp),
+////            PixelatedCard(content = {
+////                Column {
+////                    PixelText(text)
+////                    PixelText(text, fontSize = 35.sp, color = Green)
+////
+////                }
+////
+////            })
+////            PixelMCard()
+////            PixelText(text, fontSize = 25.sp)
+////            PixelText(text, fontSize = 35.sp, color = Green)
+////            PixelText(text, fontSize = 35.sp, color = Red, fontWeight = FontWeight.Bold)
+////            PixelText(text, fontSize = 35.sp, color = Green, maxLines = 2,)
 //
+////            Box(
+////                modifier = Modifier
+////                    .size(200.dp)
+////                    .background(Color.Black)
+////                    .shadow(0.dp, RoundedCornerShape(20.dp))
+////                    .pixelatedBorder(borderColor = Color.Magenta,
+////                        borderWidth = 4.dp, pixelSize = 6.dp),
+////
+////
+////            ) {
+////                Text(
+////                    "Pixel Border",
+////                    modifier = Modifier.align(Alignment.Center),
+////                    color = Color.White
+////                )
+////            }
 //
-//            ) {
-//                Text(
-//                    "Pixel Border",
-//                    modifier = Modifier.align(Alignment.Center),
-//                    color = Color.White
-//                )
-//            }
-
-        }
-
-        // PixelToast OVERLAY (correct placement)
-        PixelToast(
-            message = "Hello from PixelToast!",
-            show = showToast,
-            onDismiss = { showToast = false }
-        )
-
-    }
-}
+//        }
+//
+//        // PixelToast OVERLAY (correct placement)
+//        PixelToast(
+//            message = "Hello from PixelToast!",
+//            show = showToast,
+//            onDismiss = { showToast = false }
+//        )
+//
+//    }
+//}
 
 
 
@@ -302,7 +303,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     PopTextTheme {
-        Greeting("Android")
+//        Greeting("Android")
     }
 }
 

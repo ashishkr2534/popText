@@ -408,7 +408,7 @@ fun PixelCard(
 //}
 
 @Composable
-fun MinecraftPixelCard2(
+fun MinecraftPixelCard(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
 ) {

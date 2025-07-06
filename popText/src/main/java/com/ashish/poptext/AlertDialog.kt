@@ -16,11 +16,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 
 /**
  * Created by Ashish Kr on 24,June,2025
@@ -160,3 +170,144 @@ fun PixelMCard(
         )
     }
 }
+
+@Composable
+fun PixelAlertDialog(
+    onDismissRequest: () -> Unit,
+    title: String,
+    text: String,
+    confirmButtonText: String,
+    onConfirm: () -> Unit,
+    dismissButtonText: String? = null,
+    onDismiss: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    properties: DialogProperties = DialogProperties()
+) {
+    Dialog(
+        onDismissRequest = onDismissRequest,
+        properties = properties
+    ) {
+        MinecraftPixelCard(
+            modifier = modifier
+                .padding(5.dp)
+                .wrapContentHeight()
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .padding(5.dp)
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = title,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.Monospace,
+                    color = Color(0xFF2E2E2E),
+                    modifier = Modifier.padding(bottom = 12.dp)
+                )
+
+                Text(
+                    text = text,
+                    fontSize = 16.sp,
+                    fontFamily = FontFamily.Monospace,
+                    color = Color(0xFF2E2E2E),
+                    modifier = Modifier.padding(bottom = 24.dp)
+                )
+
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    modifier = Modifier.align(Alignment.End)
+                ) {
+                    dismissButtonText?.let {
+                        Button(
+                            onClick = {
+                                onDismiss?.invoke() ?: onDismissRequest()
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color(0xFFAAAAAA),
+                                contentColor = Color.Black
+                            )
+                        ) {
+                            Text(it, fontFamily = FontFamily.Monospace)
+                        }
+                    }
+
+                    Button(
+                        onClick = onConfirm,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF6BBF59),
+                            contentColor = Color.White
+                        )
+                    ) {
+                        Text(confirmButtonText, fontFamily = FontFamily.Monospace)
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun PixelAlertDialogCustom(
+    onDismissRequest: () -> Unit,
+    modifier: Modifier = Modifier,
+    title: (@Composable () -> Unit)? = null,
+    text: (@Composable () -> Unit)? = null,
+    confirmButton: @Composable () -> Unit,
+    dismissButton: (@Composable () -> Unit)? = null,
+    properties: DialogProperties = DialogProperties()
+) {
+    Dialog(
+        onDismissRequest = onDismissRequest,
+        properties = properties
+    ) {
+        MinecraftPixelCard(
+            modifier = modifier
+                .padding(5.dp)
+                .wrapContentHeight()
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(5.dp)
+                    .fillMaxWidth()
+            ) {
+                title?.let {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 12.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        it()
+                    }
+                }
+
+                text?.let {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 24.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        it()
+                    }
+                }
+
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    modifier = Modifier
+                        .align(Alignment.End)
+                ) {
+                    dismissButton?.invoke()
+                    confirmButton()
+                }
+            }
+        }
+    }
+}
+
+
+
+

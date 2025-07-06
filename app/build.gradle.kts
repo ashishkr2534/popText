@@ -61,5 +61,6 @@ dependencies {
 
     // 👉 local library
     implementation(project(":popText"))
+    implementation("com.github.ashishkr2534:ComposeGlassify-LiquidGlass_Library:1.0.1")
 //    implementation(libs.poptext)
 }
