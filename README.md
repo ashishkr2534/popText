@@ -3,7 +3,7 @@
 **popText** is a Jetpack Compose UI component library built with a pixel-art style inspired by retro games like Minecraft. It includes uniquely styled composables like `PixelButton`, `PixelAlertDialog`, `MinecraftPixelCard`, and more. Designed for nostalgic apps, indie games, or playful UIs.
 
 > ✨ Pixel-perfect components for Jetpack Compose.
-
+> ✨ Version - 1.0.8
 ---
 
 ## 📦 Features
